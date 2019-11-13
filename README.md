@@ -57,7 +57,6 @@ Using funapis is pretty simple from command line.
 
 * **numn** - Number Apis
     * numn *options*
-    *options* -
         * -h
         * -f
         * -ft
