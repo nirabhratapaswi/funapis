@@ -1,0 +1,7 @@
+pvenv
+.vscode
+build
+dist
+funapis.egg-info
+*__pycache__*
+*.pyc
