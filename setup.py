@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='funapis',
-    version='0.2',
+    version='0.3',
     author="Nirabhra Tapaswi",
     author_email="nirabhratapaswi@gmail.com",
     description="Command line tool for some fun api usage",

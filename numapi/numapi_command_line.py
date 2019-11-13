@@ -15,9 +15,23 @@ headers = {
 with open(token_file_path, 'r') as file:
     headers["x-rapidapi-key"] = str(file.read())
 
+def test_token(token):
+    headers["x-rapidapi-key"] = token
+    url = "https://numbersapi.p.rapidapi.com/random/trivia"
+    querystring = {"max":"20","fragment":"true","min":"10","json":"true"}
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    return response.ok
+
 def update_token(token):
+    if not test_token(token):
+        return False
+
     with open(token_file_path, 'w') as file:
         file.write(token)
+        file.close()
+
+    return True
 
 def main():
     """
@@ -25,9 +39,13 @@ def main():
     """
 
     if "-t" in argumentList:
+        if not update_token(argumentList[argumentList.index("-t") + 1]):
+            sys.stdout.write("Unable to update token, it may be invalid or file may not be written properly.\nCheck token validity again!\n")
+            sys.stdout.flush()
+            return
         headers["x-rapidapi-key"] = argumentList[argumentList.index("-t") + 1]
-        argumentList.pop("-t")
-        argumentList.pop(headers["x-rapidapi-key"])
+        argumentList.pop(argumentList.index("-t"))
+        argumentList.pop(argumentList.index(headers["x-rapidapi-key"]))
 
 
     if len(argumentList) > 2:
