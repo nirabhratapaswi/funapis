@@ -94,7 +94,7 @@ def main():
                 ("-f", "get math fact about a number. Ex. -f 29"),
                 ("-ft", "get trivia fact about a number. Ex. -ft 7"),
                 ("-fy", "get fact about year. Ex. -fy 2003"),
-                ("-fd", "get fact about data. Ex. -fd 5/23")
+                ("-fd", "get fact about date. Ex. -fd 5/23")
             ]
             for pair in options:
                 sys.stdout.write(f"\t{pair[0]}\t{pair[1]}\n")
